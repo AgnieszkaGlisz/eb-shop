@@ -1,5 +1,5 @@
 class book:
-    def __init__(self, author, title, publisher, category, description, informations, price, currentPrice, status, img):
+    def __init__(self, title, author, publisher, category, description, informations, price, currentPrice, status, img):
         self.title = title
         self.author = author
         self.publisher = publisher
@@ -10,4 +10,3 @@ class book:
         self.currentPrice = currentPrice
         self.status = status
         self.img = img
-
