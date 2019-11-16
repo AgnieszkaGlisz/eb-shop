@@ -1,0 +1,28 @@
+version: '3'
+services:
+  prestashop:
+    image: 'prestashop/prestashop:1.7'
+    environment:
+      - 'DB_USER=prestashop'
+      - 'DB_PASSWD=prestashop'
+      - 'DB_NAME=prestashop-db'
+      - 'PS_LANGUAGE=pl'
+      - 'PS_COUNTRY=PL'
+    network_mode: host
+    # ports:
+    #   - '80:80'
+      # - '3306:3306'
+
+  mysql:
+    image: 'mysql:5.7'
+    volumes:
+      - '/data:/var/lib/mysql'
+    environment:
+      - 'MYSQL_ROOT_PASSWORD=naxifag'
+      - 'MYSQL_DATABASE=prestashop-db'
+      - 'MYSQL_USER=prestashop'
+      - 'MYSQL_PASSWORD=prestashop'
+    network_mode: host
+    # ports:
+    #   - '3306:3306'
+      # - '80:80'
