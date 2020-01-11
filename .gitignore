@@ -1,9 +1,5 @@
-
-# Created by https://www.gitignore.io/api/python,vagrant,ansible
-# Edit at https://www.gitignore.io/?templates=python,vagrant,ansible
-
-### Ansible ###
-*.retry
+### Docker volumes ###
+prestashop/
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
@@ -109,15 +105,3 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-
-### Vagrant ###
-# General
-.vagrant/
-
-# Log files (if you are creating logs in debug mode, uncomment this)
-# *.log
-
-### Vagrant Patch ###
-*.box
-
-# End of https://www.gitignore.io/api/python,vagrant,ansible

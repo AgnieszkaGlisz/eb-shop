@@ -1,0 +1,47 @@
+version: '3'
+services:
+  mysql:
+    image: 'mysql:5.7'
+    container_name: shop-db
+    volumes:
+      - ./prestashop/db-data:/data/db
+    environment:
+      - 'MYSQL_ROOT_PASSWORD=prestashop'
+      - 'MYSQL_DATABASE=prestashop'
+    networks:
+      - shop-net
+    ports:
+      - '3307:3306'
+
+  prestashop:
+    image: 'prestashop/prestashop:1.7'
+    depends_on:
+      - mysql
+    container_name: shop
+    environment:
+      - 'DB_SERVER=shop-db'
+      - 'DB_USER=root'
+      - 'DB_PASSWD=prestashop'
+      - 'DB_NAME=prestashop'
+      - 'PS_INSTALL_AUTO=1'
+      - 'PS_ERASE_DB=1'
+      - 'PS_DOMAIN=localhost'
+      - 'PS_LANGUAGE=pl'
+      - 'PS_COUNTRY=PL'
+      - 'PS_FOLDER_ADMIN=admin-tools'
+      - 'PS_FOLDER_INSTALL=old-install-dir'
+      - 'ADMIN_MAIL=admin@prestashop.com'
+      - 'ADMIN_PASSWD=admin123'
+    networks:
+      - shop-net
+    ports:
+      - '80:80'
+    volumes:
+      - ./prestashop/shop-data:/data/shop
+
+networks:
+  shop-net:
+
+volumes:
+  shop-db:
+  shop-website:
